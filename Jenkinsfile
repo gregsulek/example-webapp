@@ -5,11 +5,11 @@ def GIT_COMMIT_HASH
 
 pipeline {
     agent any
-    docker {
-      image 'registry:5000/example-website'
-      registryUrl 'https://registry:5000'
-      registryCredentialsId 'credentials-id'
-    }
+        docker {
+            image 'registry:5000/example-website'
+            registryUrl 'https://registry:5000'
+            registryCredentialsId 'credentials-id'
+        }
     stages {
     //    stage('Checkout Source Code and Logging Into Registry') {
     //        steps {
