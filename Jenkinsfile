@@ -6,10 +6,9 @@ def GIT_COMMIT_HASH
 pipeline {
     agent any
     docker {
-      image 'registry:5000/maven-proto'
-      registryUrl 'https://registry'
+      image 'registry:5000/example-website'
+      registryUrl 'https://registry:5000'
       registryCredentialsId 'credentials-id'
-      args '-v /var/jenkins_home/.m2:/root/.m2'
     }
     stages {
     //    stage('Checkout Source Code and Logging Into Registry') {
