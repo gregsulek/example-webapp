@@ -4,7 +4,7 @@ def ACCOUNT_REGISTRY_PREFIX
 def GIT_COMMIT_HASH
 
 pipeline {
-    agent any
+    //agent any
     agent {
         docker {
             image 'registry:5000/example-website'
