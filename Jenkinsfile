@@ -20,7 +20,7 @@ pipeline {
                     GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
                     ACCOUNT_REGISTRY_PREFIX = "registry:5000"
                     sh """
-                    \$(docker login registry:5000 -u testuser -p testpassword)
+                    $(docker login registry:5000 -u testuser -p testpassword)
                     """
                 }
             }
