@@ -13,18 +13,18 @@ pipeline {
         registryUri = 'https://registry:5000'
     }
     stages {
-    //    stage('Checkout Source Code and Logging Into Registry') {
-    //        steps {
-    //            echo 'Logging Into the Private ECR Registry'
-    //            script {
-    //                GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
-    //                ACCOUNT_REGISTRY_PREFIX = "localhost:5000"
-    //                sh """
-    //                \$(docker login localhost:5000)
-    //                """
-    //            }
-    //        }
-    //    }
+        stage('Checkout Source Code and Logging Into Registry') {
+            steps {
+                echo 'Logging Into the Private ECR Registry'
+                script {
+                    GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+                    ACCOUNT_REGISTRY_PREFIX = "registry:5000"
+                    sh """
+                    \$(docker login registry:5000 -u testuser -p testpassword)
+                    """
+                }
+            }
+        }
 
         stage('Make A Builder Image') {
             steps {
