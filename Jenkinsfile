@@ -28,6 +28,8 @@ pipeline {
             steps {
                 echo 'Starting to build the project builder docker image'
                 script {
+   		    GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+                    ACCOUNT_REGISTRY_PREFIX = "registry:5000"
                     builderImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/example-webapp-builder:${GIT_COMMIT_HASH}", "-f ./Dockerfile.builder .")
                     builderImage.push()
                     builderImage.push("${env.GIT_BRANCH}")
