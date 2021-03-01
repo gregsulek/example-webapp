@@ -4,13 +4,11 @@ def ACCOUNT_REGISTRY_PREFIX
 def GIT_COMMIT_HASH
 
 pipeline {
-    //agent any
-    agent {
-        docker {
-            image 'registry:5000/example-website'
-            registryUrl 'https://registry:5000'
-            registryCredentialsId 'credentials-id'
-        }
+    agent any
+    environment {
+        imageName = 'example-webapp'
+        registryCredentialSet = 'credential-set'
+        registryUri = 'https://registry:5000'
     }
     stages {
     //    stage('Checkout Source Code and Logging Into Registry') {
