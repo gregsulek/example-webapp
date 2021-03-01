@@ -9,6 +9,7 @@ pipeline {
         imageName = 'example-webapp'
         registryCredentialSet = 'credential-set'
         registryCredentialsId = 'credential-set'
+        registryCredential = 'credential-set'
         registryUri = 'https://registry:5000'
     }
     stages {
